@@ -47,6 +47,10 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
                       color: Colors.deepPurple[200],
                       child: ListTile(
                         title: Text(trending[index].name ?? ''),
+                        trailing: Text(
+                          "\$${trending[index].quote?.usd?.price.toString()}",
+                          style: const TextStyle(fontSize: 14),
+                        ),
                       ),
                     ),
                   );

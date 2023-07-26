@@ -2,7 +2,6 @@ import 'package:crypto_price_tracker_app/presentation/crypto_list_sreen/bloc/cry
 import 'package:crypto_price_tracker_app/presentation/crypto_list_sreen/crypto_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:crypto_price_tracker_app/core/dependencies.dart' as di;
 
 void main() {
