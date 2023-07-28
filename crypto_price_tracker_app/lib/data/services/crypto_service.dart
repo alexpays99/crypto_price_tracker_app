@@ -1,5 +1,4 @@
-import 'package:crypto_price_tracker_app/data/models/trending/datum.dart';
-import 'package:crypto_price_tracker_app/data/models/trending/trending.dart';
+import 'package:crypto_price_tracker_app/data/models/crypto_coin/crypto_coin.dart';
 import 'package:dio/dio.dart';
 
 class CryptoService {
@@ -9,21 +8,15 @@ class CryptoService {
 
   final Dio dio;
 
-  Future<List<Datum>> getMostVisited() async {
-    final headers = {
-      "X-CMC_PRO_API_KEY": "b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c",
-      "Accept": "*/*",
-    };
+  Future<List<CryptoCoin>> getMostVisited() async {
     try {
       final response = await dio.get(
-        'https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/trending/most-visited?start=1&limit=100&time_period=24h',
-        options: Options(headers: headers),
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false',
       );
 
       if (response.statusCode == 200) {
-        final trendingCryptoList =
-            Trending.fromJson(response.data).data?.data ?? [];
-        return trendingCryptoList;
+        final cryptoList = response.data as List<dynamic>;
+        return cryptoList.map((e) => CryptoCoin.fromJson(e)).toList();
       } else {
         throw Exception(response.data);
       }

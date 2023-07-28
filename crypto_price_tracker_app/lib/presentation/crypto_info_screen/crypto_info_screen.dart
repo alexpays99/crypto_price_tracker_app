@@ -1,4 +1,4 @@
-import 'package:crypto_price_tracker_app/data/models/trending/datum.dart';
+import 'package:crypto_price_tracker_app/data/models/crypto_coin/crypto_coin.dart';
 import 'package:flutter/material.dart';
 
 class CryptoInfoScreen extends StatelessWidget {
@@ -7,7 +7,7 @@ class CryptoInfoScreen extends StatelessWidget {
     required this.currency,
   });
 
-  final Datum currency;
+  final CryptoCoin currency;
 
   @override
   Widget build(BuildContext context) {
