@@ -8,10 +8,10 @@ part 'status.g.dart';
 class Status extends StatusEntity with _$Status {
   factory Status({
     DateTime? timestamp,
-    int? errorCode,
-    dynamic errorMessage,
+    @JsonKey(name: 'error_code') int? errorCode,
+    @JsonKey(name: 'error_message') dynamic errorMessage,
     int? elapsed,
-    int? creditCount,
+    @JsonKey(name: 'credit_count') int? creditCount,
     dynamic notice,
   }) = _Status;
 

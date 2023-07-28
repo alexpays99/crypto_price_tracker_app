@@ -10,8 +10,8 @@ part 'quote.g.dart';
 @freezed
 class Quote extends QuoteEntity with _$Quote {
   factory Quote({
-    Usd? usd,
-    Btc? btc,
+    @JsonKey(name: 'USD') Usd? usd,
+    @JsonKey(name: 'BTC') Btc? btc,
   }) = _Quote;
 
   factory Quote.fromJson(Map<String, dynamic> json) => _$QuoteFromJson(json);

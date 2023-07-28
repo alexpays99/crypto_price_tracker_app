@@ -8,12 +8,12 @@ part 'usd.g.dart';
 class Usd extends UsdEntity with _$Usd {
   factory Usd({
     double? price,
-    int? volume24h,
-    double? percentChange1h,
-    double? percentChange24h,
-    double? percentChange7d,
-    int? marketCap,
-    DateTime? lastUpdated,
+    @JsonKey(name: 'volume_24h') int? volume24h,
+    @JsonKey(name: 'percent_change_1h') double? percentChange1h,
+    @JsonKey(name: 'percent_change_24h') double? percentChange24h,
+    @JsonKey(name: 'percent_change_7d') double? percentChange7d,
+    @JsonKey(name: 'market_cap') int? marketCap,
+    @JsonKey(name: 'last_updated') DateTime? lastUpdated,
   }) = _Usd;
 
   factory Usd.fromJson(Map<String, dynamic> json) => _$UsdFromJson(json);
