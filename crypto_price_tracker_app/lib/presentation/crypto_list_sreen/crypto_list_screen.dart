@@ -1,5 +1,6 @@
 import 'package:crypto_price_tracker_app/presentation/crypto_info_screen/crypto_info_screen.dart';
 import 'package:crypto_price_tracker_app/presentation/crypto_list_sreen/bloc/crypto_list_bloc.dart';
+import 'package:crypto_price_tracker_app/presentation/crypto_list_sreen/widgets/coin_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,27 +31,34 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
               child: CupertinoActivityIndicator(),
             ),
             loaded: (trending) {
-              return ListView.builder(
-                itemCount: trending.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (BuildContext context) =>
-                              CryptoInfoScreen(currency: trending[index]),
-                        ),
-                      );
-                    },
-                    child: Card(
-                      color: Colors.deepPurple[200],
-                      child: ListTile(
-                        title: Text(trending[index].name ?? ''),
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView.builder(
+                  itemCount: trending.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) =>
+                                CryptoInfoScreen(currency: trending[index]),
+                          ),
+                        );
+                      },
+                      child: CoinCard(
+                        name: trending[index].name ?? '',
+                        symbol: trending[index].symbol ?? '',
+                        imageUrl: trending[index].image ?? '',
+                        price: trending[index].currentPrice,
+                        change: trending[index].priceChange24h ?? '',
+                        changePercentage:
+                            trending[index].priceChangePercentage24h,
+                        sparkLines: trending[index].sparklineIn7d,
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               );
             },
             error: (message) {
