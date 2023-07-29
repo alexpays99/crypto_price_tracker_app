@@ -11,12 +11,15 @@ class CryptoService {
   Future<List<CryptoCoin>> getMostVisited() async {
     try {
       final response = await dio.get(
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false',
+        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true',
       );
 
       if (response.statusCode == 200) {
         final cryptoList = response.data as List<dynamic>;
-        return cryptoList.map((e) => CryptoCoin.fromJson(e)).toList();
+        return cryptoList.map((e) {
+          final cryptoCoin = CryptoCoin.fromJson(e);
+          return cryptoCoin;
+        }).toList();
       } else {
         throw Exception(response.data);
       }

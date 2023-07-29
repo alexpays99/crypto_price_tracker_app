@@ -1,3 +1,5 @@
+import 'package:crypto_price_tracker_app/domain/entities/crypto_coin/spark_line_entity.dart';
+
 class CryptoCoinEntity {
   final String? id;
   final String? symbol;
@@ -25,6 +27,7 @@ class CryptoCoinEntity {
   final DateTime? atlDate;
   final dynamic roi;
   final DateTime? lastUpdated;
+  final SparkLineEntity? sparklineIn7d;
 
   CryptoCoinEntity({
     required this.id,
@@ -53,5 +56,6 @@ class CryptoCoinEntity {
     required this.atlDate,
     required this.roi,
     required this.lastUpdated,
+    required this.sparklineIn7d,
   });
 }

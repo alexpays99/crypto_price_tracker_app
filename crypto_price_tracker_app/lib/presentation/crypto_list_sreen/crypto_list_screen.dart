@@ -54,6 +54,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
                         change: trending[index].priceChange24h ?? '',
                         changePercentage:
                             trending[index].priceChangePercentage24h,
+                        sparkLines: trending[index].sparklineIn7d,
                       ),
                     );
                   },

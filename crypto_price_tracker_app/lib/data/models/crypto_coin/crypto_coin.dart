@@ -1,3 +1,4 @@
+import 'package:crypto_price_tracker_app/data/models/crypto_coin/sparkline_in7d.dart';
 import 'package:crypto_price_tracker_app/domain/entities/crypto_coin/crypto_coin_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -35,6 +36,7 @@ class CryptoCoin extends CryptoCoinEntity with _$CryptoCoin {
     @JsonKey(name: 'atl_date') DateTime? atlDate,
     dynamic roi,
     @JsonKey(name: 'last_updated') DateTime? lastUpdated,
+    @JsonKey(name: 'sparkline_in_7d') SparklineIn7d? sparklineIn7d,
   }) = _CryptoCoin;
 
   factory CryptoCoin.fromJson(Map<String, dynamic> json) =>
@@ -67,5 +69,6 @@ class CryptoCoin extends CryptoCoinEntity with _$CryptoCoin {
         atlDate: entity.atlDate,
         roi: entity.roi,
         lastUpdated: entity.lastUpdated,
+        sparklineIn7d: SparklineIn7d.fromEntity(entity.sparklineIn7d),
       );
 }

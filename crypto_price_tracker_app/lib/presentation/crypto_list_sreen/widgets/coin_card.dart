@@ -1,4 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:crypto_price_tracker_app/data/models/crypto_coin/sparkline_in7d.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class CoinCard extends StatelessWidget {
   const CoinCard({
@@ -9,6 +12,7 @@ class CoinCard extends StatelessWidget {
     required this.price,
     required this.change,
     required this.changePercentage,
+    required this.sparkLines,
   });
 
   final String name;
@@ -17,6 +21,7 @@ class CoinCard extends StatelessWidget {
   final dynamic price;
   final dynamic change;
   final dynamic changePercentage;
+  final SparklineIn7d? sparkLines;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +74,10 @@ class CoinCard extends StatelessWidget {
                 width: 60,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Image.network(imageUrl),
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
@@ -99,6 +107,15 @@ class CoinCard extends StatelessWidget {
                 ],
               ),
             ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SfSparkLineChart(
+                  color: changePercentage > 0 ? Colors.green : Colors.red,
+                  data: sparkLines?.price,
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -110,16 +127,6 @@ class CoinCard extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.grey[900],
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    change.toDouble() < 0
-                        ? change.toDouble().toString()
-                        : '+${change.toDouble()}',
-                    style: TextStyle(
-                      color: change.toDouble() < 0 ? Colors.red : Colors.green,
-                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
