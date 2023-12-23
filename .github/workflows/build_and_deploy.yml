@@ -45,6 +45,6 @@ jobs:
         source_file: ./build/app/outputs/flutter-apk/app-release.apk
         destination_file: gs://crypto_price_tracker_app_deployment_bucket/builds/local_file.txt
         application_credentials: ${{ secrets.GCP_AUTH }}
-        project_id: myproject_on_gcp
+        project_id: fourth-library-399613
   
 
