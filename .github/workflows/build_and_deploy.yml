@@ -18,9 +18,6 @@ jobs:
       with:
         flutter-version: '3.16.3'  # Replace with the Flutter version you want
 
-    - name: Install dependencies
-      run: flutter pub get
-
     - name: Build APK and AAB
       run: flutter --disable-analytics build apk && flutter --disable-analytics build appbundle
 
