@@ -111,7 +111,10 @@ class CoinCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SfSparkLineChart(
-                  color: changePercentage > 0 ? Colors.green : Colors.red,
+                  axisLineColor: Colors.transparent,
+                  color: changePercentage > 0
+                      ? const Color.fromARGB(255, 148, 202, 150)
+                      : const Color.fromARGB(255, 231, 103, 94),
                   data: sparkLines?.price,
                 ),
               ),
@@ -136,8 +139,8 @@ class CoinCard extends StatelessWidget {
                         : '+${changePercentage.toDouble()}%',
                     style: TextStyle(
                       color: changePercentage.toDouble() < 0
-                          ? Colors.red
-                          : Colors.green,
+                          ? const Color.fromARGB(255, 231, 103, 94)
+                          : const Color.fromARGB(255, 148, 202, 150),
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),

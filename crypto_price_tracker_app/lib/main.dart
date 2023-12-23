@@ -1,3 +1,4 @@
+import 'package:crypto_price_tracker_app/presentation/crypto_info_screen/bloc/crypto_info_bloc.dart';
 import 'package:crypto_price_tracker_app/presentation/crypto_list_sreen/bloc/crypto_list_bloc.dart';
 import 'package:crypto_price_tracker_app/presentation/crypto_list_sreen/crypto_list_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,9 @@ void main() {
         BlocProvider<CryptoListBloc>(
           create: (BuildContext context) => di.getIt<CryptoListBloc>()
             ..add(const CryptoListEvent.getMostVisited()),
+        ),
+        BlocProvider<CryptoInfoBloc>(
+          create: (BuildContext context) => di.getIt<CryptoInfoBloc>(),
         ),
       ],
       child: const MyApp(),
@@ -30,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const CryptoListScreen(title: 'Crypto Price App'),
+      home: const CryptoListScreen(title: 'Crypto Monitor'),
     );
   }
 }
