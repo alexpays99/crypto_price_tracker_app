@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v2
       # Шаг для получения зависимостей проекта
       - name: Get dependencies
-        run: flutter --disable-analytics pub get
+        run: flutter --disable-analytics pub get && flutter --disable-analytics pub run build_runner build --delete-conflicting-outputs
       # Шаг для сборки проекта в режиме отладки
       - name: Build debug apk
         run: flutter --disable-analytics pub get build apk --release
