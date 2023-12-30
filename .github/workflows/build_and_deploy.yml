@@ -47,12 +47,12 @@ jobs:
           token: ${{ secrets.CHAT_ID }}
           # Текст сообщения, который содержит статус рабочего процесса
           message: |
-            👨🏾‍💻 Actor: ${{ github.actor }}
-            🚀 Workflow: ${{ github.workflow }}
-            🗂 Repository: ${{ github.repository }}
-            🔎 Commit: ${{ github.sha }}
-            🏷 Branch: ${{ github.ref }}
-            🎯 Event: ${{ github.event_name }}
-            🥇 Job: ${{ github.job }}
-            🚦 Status: ${{ job.status }}
-            🌐 URL: ${{ github.event.repository.url }}
+            Actor: ${{ github.actor }}
+            Workflow: ${{ github.workflow }}
+            Repository: ${{ github.repository }}
+            Commit: ${{ github.sha }}
+            Branch: ${{ github.ref }}
+            Event: ${{ github.event_name }}
+            Job: ${{ github.job }}
+            Status: ${{ job.status }}
+            URL: ${{ github.event.repository.url }}
