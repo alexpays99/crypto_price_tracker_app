@@ -25,10 +25,10 @@ jobs:
         uses: actions/checkout@v2
       # Шаг для получения зависимостей проекта
       - name: Get dependencies
-        run: flutter pub get
+        run: flutter --disable-analytics pub get
       # Шаг для сборки проекта в режиме отладки
       - name: Build debug apk
-        run: flutter build apk --debug
+        run: flutter --disable-analytics pub get build apk --release
   # Задача для отправки оповещения в телеграм
   notifyTelegram:
     # Операционная система, на которой запускается задача
