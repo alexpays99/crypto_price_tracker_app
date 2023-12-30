@@ -41,7 +41,7 @@ jobs:
       - name: Send message to Telegram
         uses: appleboy/telegram-action@master
         with:
-          # Токен бота, который отправляет сообщение
+          # Токен бота, который отправляет сообщение fffsdaf
           to: ${{ secrets.CHAT_ID }}
           # ID чата, в который отправляется сообщение
           token: ${{ secrets.BOT_TOKEN }}
