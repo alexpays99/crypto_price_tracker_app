@@ -49,6 +49,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: apk-file
+      # Шаг для вывода списка файлов в папке build/app/outputs/flutter-apk
+      - name: List files
+        run: ls -R build/app/outputs/flutter-apk
       # Шаг для отправки сообщения и .apk файла в телеграм
       - name: Send message and apk file to Telegram
         uses: appleboy/telegram-action@master
