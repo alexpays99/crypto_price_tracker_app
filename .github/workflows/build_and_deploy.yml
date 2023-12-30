@@ -42,6 +42,7 @@ jobs:
     # Условие, при котором запускается задача
     if: always()
     # Шаги, которые выполняются в задаче
+    needs: build
     steps:
       # Шаг для загрузки артефакта
       - name: Download apk file
@@ -71,7 +72,7 @@ jobs:
           document: apk-file/app-release.apk
 
 
-          
+
 # # Название рабочего процесса
 # name: Flutter CI/CD
 
