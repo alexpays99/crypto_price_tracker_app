@@ -51,7 +51,7 @@ jobs:
             👨🏾‍💻 Actor: ${{ github.actor }}
             🚀 Workflow: ${{ github.workflow }}
             🗂 Repository: ${{ github.repository }}
-            🔎 Commit: ${{ github.event.head_commit }}
+            🔎 Commit: ${{ github.event.head_commit.message }}
             🏷 Branch: ${{ github.ref }}
             🎯 Event: ${{ github.event_name }}
             🥇 Job: ${{ github.job }}
